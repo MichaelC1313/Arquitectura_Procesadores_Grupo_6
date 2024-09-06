@@ -1,7 +1,4 @@
 
-### INTEGRANTES
-Michael Steven Carvajal,
-Kevin Gonzalez
 # SUMADOR 4 BITS
 
 Para este modulo implementaremos el anteriormente realizado (SUMADOR 1 BIT), llamando a traves de la instancia 
@@ -43,16 +40,33 @@ endmodule
 
 El módulo `sum4b` es un sumador de 4 bits que se construye utilizando cuatro instancias del sumador de 1 bit (`sum1b`), conectadas en serie para propagar el acarreo entre cada bit.
 
-1. **Instanciación de Sumadores de 1 Bit (`sum1b`):**
+**Instanciación de Sumadores de 1 Bit (`sum1b`):**
+	** Primera Etapa:
+	- `s0`: Para los bits menos significativos (`A[0]` y `B[0]`) y el acarreo de entrada (`Ci = 0`). Produce la suma `Sum[0]` y un acarreo `c1`.
+	```
+	sum1b s0 (.A(A[0]), .B(B[0]), .Ci(1'b0),  .Cout(c1), .Sum(Sum[0]));
 
-   - `s0`: Para los bits menos significativos (`A[0]` y `B[0]`) y el acarreo de entrada (`Ci = 0`). Produce la suma `Sum[0]` y un acarreo `c1`.
-   - `s1`: Para los segundos bits (`A[1]` y `B[1]`) junto con el acarreo `c1` producen la primera suma. La cual se almacena en `Sum[1]` y su acarreo en `c2`.
-   - `s2`: Para los terceros bits (`A[2]` y `B[2]`) junto con el acarreo `c2` producen la primera suma. La cual se almacena en `Sum[2]` y su acarreo en `c3`.
-   - `s3`: Para los bits más significativos (`A[3]` y `B[3]`) junto con el acarreo `c3` producido por la tercera suma. Produce la suma `Sum[3]` y el acarreo final `Cout`.
+	```
+	** Segunda Etapa:
+	 - `s1`: Para los segundos bits (`A[1]` y `B[1]`) junto con el acarreo `c1` producen la primera suma. La cual se almacena en `Sum[1]` y su acarreo en `c2`.
+	```
+	sum1b s1 (.A(A[1]), .B(B[1]), .Ci(c1),    .Cout(c2), .Sum(Sum[1]));
 
-### Cómo funciona?
+	```
 
-  - El acarreo se propaga de un bit a otro, desde el bit menos significativo hasta el más significativo.
-  - Esto permite que el módulo `sum4b` maneje correctamente la adición de números de 4 bits, produciendo tanto la suma de los bits como el acarreo final.
+	** Tercera Etapa:
+   	- `s2`: Para los terceros bits (`A[2]` y `B[2]`) junto con el acarreo `c2` producen la primera suma. La cual se almacena en `Sum[2]` y su acarreo en `c3`.
+	```
+	sum1b s2 (.A(A[2]), .B(B[2]), .Ci(c2),    .Cout(c3), .Sum(Sum[2]));
+
+	```
+	** Cuarta Etapa:
+	- `s3`: Para los bits más significativos (`A[3]` y `B[3]`) junto con el acarreo `c3` producido por la tercera suma. Produce la suma `Sum[3]` y el acarreo final `Cout`.
+	```
+	sum1b s3 (.A(A[3]), .B(B[3]), .Ci(c3),    .Cout(Cout), .Sum(Sum[3]));
+
+	```
+### Conclusión
+
 
 
