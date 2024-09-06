@@ -34,18 +34,12 @@ endmodule
   - `Sum`: Resultado de la suma de los bits de entrada.
   - `Cout`: Bit de acarreo de salida (carry-out), que indica si hay un acarreo hacia el siguiente bit más significativo.
 
-- **`result`**: Un registro de 2 bits (`reg [1:0]`) que se utiliza para almacenar el resultado completo de la suma de `A`, `B`, y `Ci`.
+- **`result`**: Un registro de 2 bits (`reg [1:0]`) que se utiliza para almacenar el resultado completo de la suma de `A`, `B`, y `Ci`. El menos significativo en (`result [0]`) y el mas signiticativo en (`result [1]`).
 
 ### Funcionamiento del Módulo
-
-1. **Asignaciones Directas (`assign`):**
    - `Sum = result[0];` asigna el bit menos significativo de `result` a la salida `Sum`.
    - `Cout = result[1];` asigna el bit más significativo de `result` a la salida `Cout`.
-
-2. **Bloque `always`:**
    - El bloque `always@(*)` se activa siempre que alguna de las señales `A`, `B`, o `Ci` cambie de valor.
-   - Dentro de este bloque, se realiza la operación de suma de `A`, `B`, y `Ci`. El resultado es almacenado en el registro `result`, que tiene dos bits para acomodar tanto el resultado de la suma como el acarreo generado.
-
 ### Cómo funciona?
 
 - **Suma de 1 Bit**: 
@@ -66,5 +60,7 @@ endmodule
 |  1  |  1  |  0  |    1   |   0   |
 |  1  |  1  |  1  |    1   |   1   |
 
-### Diagrama
+### Conclusión
+
+En este codigo implementamo el registro de 2 bits para obtener el resultado de la suma y su acarreo. Teniendo como base este codigo que sera instanciado a lo largo del curso.
 
