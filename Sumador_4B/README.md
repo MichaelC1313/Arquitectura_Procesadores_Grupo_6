@@ -42,14 +42,14 @@ El módulo `sum4b` es un sumador de 4 bits que se construye utilizando cuatro in
 
 **Instanciación de Sumadores de 1 Bit (`sum1b`):**
 
-** Primera Etapa:**
+Primera Etapa:
 - `s0`: Para los bits menos significativos (`A[0]` y `B[0]`) y el acarreo de entrada (`Ci = 0`). Produce la suma `Sum[0]` y un acarreo `c1`.
  
 ```
 sum1b s0 (.A(A[0]), .B(B[0]), .Ci(1'b0),  .Cout(c1), .Sum(Sum[0]));
 
 ```
-** Segunda Etapa:**
+Segunda Etapa:
 - `s1`: Para los segundos bits (`A[1]` y `B[1]`) junto con el acarreo `c1` producen la primera suma. La cual se almacena en `Sum[1]` y su acarreo en `c2`.
   
 ```
@@ -57,7 +57,7 @@ sum1b s1 (.A(A[1]), .B(B[1]), .Ci(c1),    .Cout(c2), .Sum(Sum[1]));
 
 ```
 
-** Tercera Etapa:**
+Tercera Etapa:
 - `s2`: Para los terceros bits (`A[2]` y `B[2]`) junto con el acarreo `c2` producen la primera suma. La cual se almacena en `Sum[2]` y su acarreo en `c3`.
     
 ```
@@ -65,7 +65,7 @@ sum1b s2 (.A(A[2]), .B(B[2]), .Ci(c2),    .Cout(c3), .Sum(Sum[2]));
 
 ```
  
-** Cuarta Etapa:**
+Cuarta Etapa:
 - `s3`: Para los bits más significativos (`A[3]` y `B[3]`) junto con el acarreo `c3` producido por la tercera suma. Produce la suma `Sum[3]` y el acarreo final `Cout`.
 ```
 sum1b s3 (.A(A[3]), .B(B[3]), .Ci(c3),    .Cout(Cout), .Sum(Sum[3]));
