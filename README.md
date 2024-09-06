@@ -1,4 +1,8 @@
 # Arquitectura_Procesadores_Grupo_6
+## Universidad ECCI
+## Orientador:
+Diana Natali Maldonado Ramírez
+dmaldonador@ecci.edu.co
 
 ## Integrantes:
 
