@@ -73,5 +73,6 @@ sum1b s3 (.A(A[3]), .B(B[3]), .Ci(c3),    .Cout(Cout), .Sum(Sum[3]));
 ```
 ### Conclusión
 
-
+Usamos un modulo sumador que va entregando un acarreo al siguiente modulo, teniendo un diseño en cascada. El cual nos permite alcanzar la suma de 4 bits.
+De esta manera podemos evidenciar que la instanciación nos permite reutilizar partes del codigos anteriores para realizar diseños cada vez mas complejos
 
