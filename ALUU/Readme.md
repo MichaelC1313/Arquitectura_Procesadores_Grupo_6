@@ -129,7 +129,6 @@ El módulo ALU realiza operaciones aritméticas y lógicas básicas en función 
 
 El módulo ALU recibe como entrada dos operandos de 4 bits, A y B, una señal de control opcode que selecciona la operación, y señales de reloj (clk) y reset (reset). Las salidas incluyen el resultado de la operación (result), el carry o borrow (Cout), y señales para el control de displays de 7 segmentos.
 
-```verilog
 module ALU (
     input [3:0] A,           // Entrada A de 4 bits
     input [3:0] B,           // Entrada B de 4 bits
