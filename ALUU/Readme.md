@@ -62,7 +62,71 @@ Este módulo requiere los siguientes submódulos:
 - `multiplicador`: Módulo de multiplicación secuencial.
 - `BCD2Sseg`: Decodificador BCD a 7 segmentos.
 - `decoder`: Decodificador para múltiples displays.
+# Tablas de Verdad de la ALU
 
-## Licencia
+A continuación se presentan las tablas de verdad para las operaciones que puede realizar la ALU: **Suma**, **Resta**, **Multiplicación** y **AND**. Estas operaciones se seleccionan mediante la señal de control `opcode`.
 
-Este proyecto está disponible bajo la [Licencia MIT](LICENSE).
+## 1. Tabla de Verdad para la Suma (`opcode = 00`)
+
+| **A**   | **B**   | **Cout** | **Resultado (A + B)** |
+|---------|---------|----------|-----------------------|
+| 0000    | 0000    | 0        | 0000                  |
+| 0001    | 0001    | 0        | 0010                  |
+| 0010    | 0001    | 0        | 0011                  |
+| 0011    | 0011    | 0        | 0110                  |
+| 0100    | 0100    | 0        | 1000                  |
+| 1100    | 0011    | 1        | 1111                  |
+| 1111    | 1111    | 1        | 1110                  |
+
+En esta tabla, `Cout` representa el bit de acarreo.
+
+## 2. Tabla de Verdad para la Resta (`opcode = 01`)
+
+| **A**   | **B**   | **Borrow (Cout)** | **Resultado (A - B)** |
+|---------|---------|-------------------|-----------------------|
+| 0000    | 0000    | 0                 | 0000                  |
+| 0001    | 0001    | 0                 | 0000                  |
+| 0010    | 0001    | 0                 | 0001                  |
+| 0011    | 0011    | 0                 | 0000                  |
+| 0100    | 0010    | 0                 | 0010                  |
+| 0011    | 0100    | 1                 | 1111                  |
+| 1111    | 1111    | 0                 | 0000                  |
+
+En esta tabla, `Borrow` (Cout) indica si hay una deuda (prestamo) durante la resta.
+
+## 3. Tabla de Verdad para la Multiplicación (`opcode = 10`)
+
+| **A [2:0]** | **B [2:0]** | **Resultado (A * B)** |
+|-------------|-------------|-----------------------|
+| 000         | 000         | 000000                |
+| 001         | 001         | 000001                |
+| 010         | 001         | 000010                |
+| 011         | 010         | 000110                |
+| 100         | 011         | 001100                |
+| 111         | 111         | 110001                |
+
+En esta tabla, la multiplicación solo utiliza los 3 bits menos significativos de `A` y `B`.
+
+## 4. Tabla de Verdad para la Operación Lógica AND (`opcode = 11`)
+
+| **A**   | **B**   | **Resultado (A & B)** |
+|---------|---------|-----------------------|
+| 0000    | 0000    | 0000                  |
+| 0001    | 0001    | 0001                  |
+| 0011    | 0001    | 0001                  |
+| 0010    | 0010    | 0010                  |
+| 0100    | 0010    | 0000                  |
+| 1100    | 0110    | 0100                  |
+| 1111    | 1010    | 1010                  |
+
+La operación AND realiza una comparación bit a bit entre `A` y `B`, devolviendo 1 solo si ambos bits son 1.
+
+## Resumen de las Operaciones
+
+| **opcode** | **Operación**       | **Descripción**                    |
+|------------|---------------------|------------------------------------|
+| 00         | Suma                | A + B                              |
+| 01         | Resta               | A - B                              |
+| 10         | Multiplicación       | A[2:0] * B[2:0]                    |
+| 11         | AND                 | A & B                              |
+
