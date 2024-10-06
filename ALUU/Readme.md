@@ -198,10 +198,10 @@ Estas son señales que almacenan los resultados intermedios de las operaciones a
 
 Este bloque de código controla el flujo de las operaciones en la ALU, seleccionando la operación correspondiente según el valor de opcode:
 
--`00`: Suma.
--`01`: Resta.
--`10`: Multiplicación.
--`11`: AND lógico.
+- `00`: Suma.
+- `01`: Resta.
+- `10`: Multiplicación.
+- `11`: AND lógico.
 
 
     always @(posedge clk or posedge reset) begin
