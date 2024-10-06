@@ -245,6 +245,6 @@ Este bloque de código controla el flujo de las operaciones en la ALU, seleccion
             endcase
         end
     end
-endmodule
+endmodule.
 
 
