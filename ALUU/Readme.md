@@ -124,7 +124,7 @@ En esta tabla, la multiplicación solo utiliza los 3 bits menos significativos d
 
 El módulo ALU realiza operaciones aritméticas y lógicas básicas en función del valor de `opcode`. Se detallan las entradas, salidas y cómo cada operación es implementada.
 
-### a) Definición del Módulo
+### a) Definición del Módulo.
 
 El módulo ALU recibe como entrada dos operandos de 4 bits, A y B, una señal de control opcode que selecciona la operación, y señales de reloj (clk) y reset (reset). Las salidas incluyen el resultado de la operación (result), el carry o borrow (Cout), y señales para el control de displays de 7 segmentos.
 
@@ -141,7 +141,7 @@ module ALU (
     output [20:0] Sseg_multi // Salida para varios displays de 7 segmentos
 );
 
-### b) Señales Internas
+### b) Señales Internas.
 
 Estas son señales que almacenan los resultados intermedios de las operaciones aritméticas, así como señales de control para el multiplicador.
 
@@ -156,7 +156,7 @@ Estas son señales que almacenan los resultados intermedios de las operaciones a
     // Señales de control del multiplicador
     reg mult_init;
 
-### c) Instanciacion de Sumodulos
+### c) Instanciacion de Sumodulos.
 
     sum4b sumador (
         .A(A), 
@@ -194,7 +194,7 @@ Estas son señales que almacenan los resultados intermedios de las operaciones a
         .Sseg(Sseg_multi)       
     );
 
-### d) Logica del bloque Always
+### d) Logica del bloque Always.
 
 Este bloque de código controla el flujo de las operaciones en la ALU, seleccionando la operación correspondiente según el valor de opcode:
 
