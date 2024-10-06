@@ -119,14 +119,3 @@ En esta tabla, la multiplicación solo utiliza los 3 bits menos significativos d
 | 1100    | 0110    | 0100                  |
 | 1111    | 1010    | 1010                  |
 
-La operación AND realiza una comparación bit a bit entre `A` y `B`, devolviendo 1 solo si ambos bits son 1.
-
-## Resumen de las Operaciones
-
-| **opcode** | **Operación**       | **Descripción**                    |
-|------------|---------------------|------------------------------------|
-| 00         | Suma                | A + B                              |
-| 01         | Resta               | A - B                              |
-| 10         | Multiplicación       | A[2:0] * B[2:0]                    |
-| 11         | AND                 | A & B                              |
-
